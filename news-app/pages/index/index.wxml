@@ -1,11 +1,15 @@
-<!-- <view class="header">
-  <view class="header-title">
-    <image class="header-icon" src="/images/新闻.png"></image>
-    <view class="header-text">快读 - 资讯</view>
+<view class="header-wrapper">
+  <view class="header">
+    <view class="header-title">
+      <image class="header-icon" src="/images/新闻.png"></image>
+      <view class="header-text">快读 - 资讯</view>
   </view>
-</view> -->
+</view>
+
+</view>
 <import src="/templates/bulletin/bulletin.wxml" />
 <import src="/templates/news-item/news-item.wxml" />
+<import src="/templates/loading/loading.wxml" />
 
 <view class="tab-list-wrapper">
   <view class="tab-list">
@@ -22,17 +26,17 @@
 
 <scroll-view class="swiper-wrapper" scroll-y="true">
   <view class="news-list-wrapper" wx:if="{{ newsList.length > 0 }}">
-    <view>
+    <view bindtap="onNavigateToDetail" data-news-id="{{ topNews.id }}">
       <template is="bulletinTemplate" data="{{...topNews}}"></template>
     </view>
     <block wx:for="{{ newsList }}" wx:key="{{ index }}">
-      <view>
+      <view bindtap="onNavigateToDetail" data-news-id="{{ item.id }}">
         <template is="newsItemTemplate" data="{{...item}}"></template>
       </view>
     </block>
   </view>
   <view wx:else>
-    <image src="/images/loading.png" class="loading"></image>
+    <template is="loadingTemplate"></template>
   </view>
 
 </scroll-view>

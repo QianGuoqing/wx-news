@@ -16,7 +16,8 @@ Page({
     type: 'gn',
     currentTab: 0,
     topNews: '',
-    newsList: []
+    newsList: [],
+    user_id: ''
   },
   onLoad() {
     this._getNewsData()
@@ -41,10 +42,13 @@ Page({
     })
     this._getNewsData()
   },
+  onNavigateToDetail(event) {
+    let newsId = event.currentTarget.dataset.newsId
+    requestData.navigateToDetail(newsId)
+  },
   _getNewsData(callback) {
     requestData.requestNewsList(this.data.type, callback).then(res => {
       res = res.data
-
       let firstNews = res.result[0]
       firstNews.date = commonUtil.getDate(firstNews.date)
       let result = []

@@ -28,7 +28,7 @@ function requestNewsList(type, callback) {
   })
 }
 
-function requestNewsDetail(news_id) {
+function requestNewsDetail(news_id, callback) {
   return new Promise((resolve, reject) => {
     wx.request({
       url: 'https://test-miniprogram.com/api/news/detail',
@@ -47,15 +47,30 @@ function requestNewsDetail(news_id) {
       },
       complete: function() {
         // complete
+        callback && callback()
       }
     })
   })
 }
 
 
-function navigateToDetail() {}
+function navigateToDetail(id) {
+  wx.navigateTo({
+    url: `/pages/detail/detail?id=${id}`,
+    success: function(res){
+      // success
+    },
+    fail: function() {
+      // fail
+    },
+    complete: function() {
+      // complete
+    }
+  })
+}
 
 module.exports = {
   requestNewsList,
-  requestNewsDetail
+  requestNewsDetail,
+  navigateToDetail
 }

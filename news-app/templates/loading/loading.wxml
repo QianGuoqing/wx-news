@@ -1,0 +1,3 @@
+<template name="loadingTemplate">
+  <image src="/images/loading.png" class="loading"></image>
+</template>
