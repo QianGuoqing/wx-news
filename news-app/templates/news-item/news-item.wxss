@@ -1,0 +1,7 @@
+.news-item-wrapper {
+  display: flex;
+}
+
+.news-image {
+  width: 320rpx;
+}
