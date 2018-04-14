@@ -21,6 +21,11 @@ Page({
   onLoad() {
     this._getNewsData()
   },
+  onPullDownRefreash() {
+    this._getNewsData(() => {
+      wx.stopPullDownRefresh()
+    })
+  },
   /**
    * Tab栏切换，获取view上的text和index
    * text用于获取tab上的值，和newsMap做映射
@@ -36,10 +41,12 @@ Page({
     })
     this._getNewsData()
   },
-  _getNewsData() {
-    requestData.requestNewsList(this.data.type).then(res => {
+  _getNewsData(callback) {
+    requestData.requestNewsList(this.data.type, callback).then(res => {
       res = res.data
 
+      let firstNews = res.result[0]
+      firstNews.date = commonUtil.getDate(firstNews.date)
       let result = []
       for (let i = 1; i < res.result.length; i++) {
         let current = res.result[i]
@@ -51,7 +58,7 @@ Page({
         newsList: result
       })
       this.setData({
-        topNews: res.result[0]
+        topNews: firstNews
       })
     }).catch(err => {
       console.log(err);

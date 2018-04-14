@@ -25,14 +25,14 @@
     <view>
       <template is="bulletinTemplate" data="{{...topNews}}"></template>
     </view>
-    <block wx:for="{{newsList}}" wx:key="{{ index }}">
+    <block wx:for="{{ newsList }}" wx:key="{{ index }}">
       <view>
         <template is="newsItemTemplate" data="{{...item}}"></template>
       </view>
     </block>
   </view>
   <view wx:else>
-    loading
+    <image src="/images/loading.png" class="loading"></image>
   </view>
 
 </scroll-view>

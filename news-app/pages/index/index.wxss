@@ -77,11 +77,21 @@ scroll-view {
 }
 
 
-/* .tab-item:after {
-  content: '-';
-  color: #ffffff;
-  width: 100rpx;
+.loading {
+  width: 80rpx;
+  height: 80rpx;
   position: absolute;
-  bottom: -10rpx;
-  left: 0;
-} */
+  top: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: loadingAnimation infinite 1s;
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

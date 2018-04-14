@@ -3,7 +3,7 @@
  * 基于Promise
  */
 
-function requestNewsList(type) {
+function requestNewsList(type, callback) {
   return new Promise((resolve, reject) => {
     wx.request({
       url: 'https://test-miniprogram.com/api/news/list',
@@ -22,6 +22,7 @@ function requestNewsList(type) {
       },
       complete: function() {
         // complete
+        callback && callback()
       }
     })
   })
@@ -50,6 +51,9 @@ function requestNewsDetail(news_id) {
     })
   })
 }
+
+
+function navigateToDetail() {}
 
 module.exports = {
   requestNewsList,
