@@ -1,3 +1,8 @@
+/**
+ * - 基本满足项目的功能要求
+ * - 使用Promise封装数据请求和跳转接口
+ * - 使用template对公共模块“组件化”
+ */
 const requestData = require('../../common/requestData')
 const commonUtil = require('../../common/utils')
 const newsMap = {
@@ -42,10 +47,16 @@ Page({
     })
     this._getNewsData()
   },
+  /**
+   * 跳转至新闻详情页
+   */
   onNavigateToDetail(event) {
     let newsId = event.currentTarget.dataset.newsId
     requestData.navigateToDetail(newsId)
   },
+  /**
+   * 获取新闻信息
+   */
   _getNewsData(callback) {
     requestData.requestNewsList(this.data.type, callback).then(res => {
       res = res.data

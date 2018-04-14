@@ -20,11 +20,17 @@ Page({
       this._getNewsDetail(this.data.id)
     }
   },
+  /**
+   * 返回首页
+   */
   goBackToIndex() {
     wx.navigateBack({
       delta: 1, // 回退前 delta(默认为1) 页面
     })
   },
+  /**
+   * 获取新闻详情
+   */
   _getNewsDetail(id) {
     requestData.requestNewsDetail(id).then(res => {
       let result = res.data.result
