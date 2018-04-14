@@ -1,4 +1,5 @@
 const requestData = require('../../common/requestData')
+const commonUtil = require('../../common/utils')
 const newsMap = {
   '国内': 'gn',
   '国际': 'gj',
@@ -38,12 +39,19 @@ Page({
   _getNewsData() {
     requestData.requestNewsList(this.data.type).then(res => {
       res = res.data
-      console.log(res.result);
+
+      let result = []
+      for (let i = 1; i < res.result.length; i++) {
+        let current = res.result[i]
+        current.date = commonUtil.getDate(current.date)
+        result.push(current)
+      }
+      
       this.setData({
-        newsList: res.result
+        newsList: result
       })
       this.setData({
-        topNews: this.data.newsList[0]
+        topNews: res.result[0]
       })
     }).catch(err => {
       console.log(err);

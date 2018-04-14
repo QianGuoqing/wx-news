@@ -1,12 +1,12 @@
 <template name="newsItemTemplate">
   <view class="news-item-wrapper">
     <view class="news-item">
-      <view class="news-title">山东四县都想当“宋江”：谁想牵头水浒文旅，其他三地都不服</view>
+      <view class="news-title">{{ title }}</view>
       <view class="news-extra">
-        <text class="news-source">央视新闻客户端</text>
-        <text class="news-date">2018-04-07T01:56:27.000Z</text>
+        <text class="news-source" wx:if="{{ source.length > 0 }}">{{ source }}</text>
+        <text class="news-date">{{ date }}</text>
       </view>
     </view>
-    <image class="news-image" mode="widthFix" src="http://inews.gtimg.com/newsapp_bt/0/3203362023/641"></image>
+    <image class="news-image" mode="scaleToFill" src="{{ firstImage }}"></image>
   </view>
 </template>

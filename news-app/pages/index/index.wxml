@@ -21,17 +21,18 @@
 </view>
 
 <scroll-view class="swiper-wrapper" scroll-y="true">
-  <view class="news-list-wrapper">
-    <template is="bulletinTemplate" data="{{...topNews}}"></template>
-    <template is="newsItemTemplate"></template>
-    <template is="newsItemTemplate"></template>
-    <template is="newsItemTemplate"></template>
-    <template is="newsItemTemplate"></template>
-    <template is="newsItemTemplate"></template>
-    <template is="newsItemTemplate"></template>
-    <template is="newsItemTemplate"></template>
-    <template is="newsItemTemplate"></template>
-    <template is="newsItemTemplate"></template>
+  <view class="news-list-wrapper" wx:if="{{ newsList.length > 0 }}">
+    <view>
+      <template is="bulletinTemplate" data="{{...topNews}}"></template>
+    </view>
+    <block wx:for="{{newsList}}" wx:key="{{ index }}">
+      <view>
+        <template is="newsItemTemplate" data="{{...item}}"></template>
+      </view>
+    </block>
+  </view>
+  <view wx:else>
+    loading
   </view>
 
 </scroll-view>

@@ -52,6 +52,6 @@ function requestNewsDetail(news_id) {
 }
 
 module.exports = {
-  requestNewsList: requestNewsList,
-  requestNewsDetail: requestNewsDetail
+  requestNewsList,
+  requestNewsDetail
 }
