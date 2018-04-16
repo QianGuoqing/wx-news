@@ -2,7 +2,9 @@
   <view class="bulletin-wrapper">
     <image class="bulletin-image" src="{{ firstImage }}"
     mode="scaleToFill"></image>
-    <view class="bulletin-title">{{ title }}</view>
+    <view class="bulletin-title">
+      <view class="title">{{title}}</view>
+    </view>
     <view class="bulletin-extra">
       <text wx:if="{{ source.length > 0 }}" class="bulletin-source">{{ source }}</text>
       <text class="bulletin-date">{{ date }}</text>

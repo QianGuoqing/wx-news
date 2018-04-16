@@ -24,7 +24,7 @@
   </view>
 </view>
 
-<scroll-view class="swiper-wrapper" scroll-y="true">
+<view class="swiper-wrapper">
   <view class="news-list-wrapper" wx:if="{{ newsList.length > 0 }}">
     <view bindtap="onNavigateToDetail" data-news-id="{{ topNews.id }}">
       <template is="bulletinTemplate" data="{{...topNews}}"></template>
@@ -38,5 +38,4 @@
   <view wx:else>
     <template is="loadingTemplate"></template>
   </view>
-
-</scroll-view>
+</view>

@@ -34,7 +34,12 @@
 }
 
 .bulletin-title {
+  background-color: rgba(0,0,0,0.7);
   width: 720rpx;
+}
+
+.title {
+  color: #fff;
 }
 
 .bulletin-source {

@@ -27,7 +27,7 @@ Page({
   onLoad() {
     this._getNewsData()
   },
-  onPullDownRefreash() {
+  onPullDownRefresh() {
     this._getNewsData(() => {
       wx.stopPullDownRefresh()
     })

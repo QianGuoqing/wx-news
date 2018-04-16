@@ -7,7 +7,7 @@ Page({
     newsDetail: {},
     newsContent: ''
   },
-  onPullDownRefreash() {
+  onPullDownRefresh() {
     this._getNewsDetail(this.data.id, () => {
       wx.stopPullDownRefresh()
     })

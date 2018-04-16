@@ -3,6 +3,8 @@
  * 基于Promise
  */
 
+const REQ_OK = 200
+
 function requestNewsList(type, callback) {
   return new Promise((resolve, reject) => {
     wx.request({
@@ -14,7 +16,9 @@ function requestNewsList(type, callback) {
       // header: {}, // 设置请求的 header
       success: function(res){
         // success
-        resolve(res)
+        if (res.data.code === REQ_OK) {
+          resolve(res)
+        }
       },
       fail: function(err) {
         // fail
@@ -39,7 +43,9 @@ function requestNewsDetail(news_id, callback) {
       // header: {}, // 设置请求的 header
       success: function(res){
         // success
-        resolve(res)
+        if (res.data.code === REQ_OK) {
+          resolve(res)
+        }
       },
       fail: function(err) {
         // fail
@@ -52,7 +58,6 @@ function requestNewsDetail(news_id, callback) {
     })
   })
 }
-
 
 function navigateToDetail(id) {
   wx.navigateTo({
@@ -67,6 +72,10 @@ function navigateToDetail(id) {
       // complete
     }
   })
+}
+
+function wxRequest() {
+  
 }
 
 module.exports = {
